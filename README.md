@@ -16,6 +16,12 @@ A live terminal HUD for [Cursor IDE](https://cursor.sh) — see your active mode
 ## Install
 
 ```bash
+uv pip install cursor-hub
+```
+
+Or with pip:
+
+```bash
 pip install cursor-hub
 ```
 
