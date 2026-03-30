@@ -23,7 +23,7 @@ from pathlib import Path
 from rich.console import Console
 from rich.live import Live
 
-# Allow `python src/cursor_hub/main.py` in addition to `python -m cursor_hub`.
+# Allow `python3 src/cursor_hub/main.py` in addition to `python3 -m cursor_hub`.
 if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 

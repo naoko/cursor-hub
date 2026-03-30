@@ -16,7 +16,7 @@ A live terminal HUD for [Cursor IDE](https://cursor.sh) — see your active mode
 ## Install
 
 ```bash
-uv pip install git+https://github.com/naoko/cursor-hub
+uv pip install --python python3 git+https://github.com/naoko/cursor-hub
 ```
 
 ## Usage
