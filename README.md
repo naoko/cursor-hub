@@ -8,7 +8,7 @@ A live terminal HUD for [Cursor IDE](https://cursor.sh) — see your active mode
 
 - **Model** — detects the active model from your Cursor settings (Claude, GPT-4o, Gemini, o3, Grok, and more)
 - **Context bar** — 12-block visual meter, green → yellow → red as context fills up, with token count
-- **Actions** — TODO-style action row for pending user input and high-context handoff suggestions
+- **Actions** — action row for pending user input and high-context handoff suggestions
 - **Config counts** — rules files, MCP servers, and notepads loaded for the current project
 - **Session timer** — how long cursor-hub has been running, plus live Cursor process memory usage
 - **Project path** — confirms which project directory and settings file are being read
@@ -16,16 +16,8 @@ A live terminal HUD for [Cursor IDE](https://cursor.sh) — see your active mode
 ## Install
 
 ```bash
-uv pip install cursor-hub
+uv pip install git+https://github.com/naoko/cursor-hub
 ```
-
-Or with pip:
-
-```bash
-pip install cursor-hub
-```
-
-Requires Python 3.10+. Dependencies ([rich](https://github.com/Textualize/rich), [psutil](https://github.com/giampaolo/psutil)) are installed automatically.
 
 ## Usage
 
@@ -36,7 +28,10 @@ cursor-hub
 # Print once and exit
 cursor-hub --once
 
-# Target a specific project directory
+# Run from your project directory (auto-detects cwd)
+cd ~/projects/my-app && cursor-hub
+
+# Or target a specific project directory
 cursor-hub --project ~/projects/my-app
 
 # Custom refresh interval
@@ -48,14 +43,6 @@ cursor-hub --all
 # Show resolved settings file path in PROJECT row
 cursor-hub --show-paths
 
-# Override the displayed model without touching Cursor settings
-CURSOR_MODEL=gpt-4o cursor-hub
-```
-
-You can also run it directly without installing:
-
-```bash
-pipx run cursor-hub
 ```
 
 Press `Ctrl+C` to exit the live dashboard.
@@ -82,21 +69,6 @@ cursor-hub reads directly from Cursor's config files — no API calls, no extens
 | Windows | `%APPDATA%\Cursor\User\settings.json` |
 
 Global MCP and rules always live at `~/.cursor/` regardless of OS.
-
-## Supported models
-
-cursor-hub recognizes all models available in Cursor as of mid-2025:
-
-| Provider | Models |
-|---|---|
-| Anthropic | Claude Opus 4, Sonnet 4, Sonnet 3.7 / 3.5, Haiku 3.5, Claude 3 Opus |
-| OpenAI | GPT-4.1, GPT-4o, GPT-4 Turbo, o1, o3, o4-mini |
-| Google | Gemini 2.5 Pro, 2.0 Flash, 1.5 Pro |
-| xAI | Grok 3 |
-| DeepSeek | DeepSeek (all variants) |
-| Cursor | Cursor Small |
-
-Any unrecognized model string is displayed as-is with a neutral style.
 
 ## Tips
 
